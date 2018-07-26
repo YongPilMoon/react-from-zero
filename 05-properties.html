@@ -9,7 +9,7 @@
 <div id="app"></div>
 
 <script type="text/babel">
-// Components, like elements, can use properties, too
+// 컴포넌트는 엘리먼트와 마찬가지로 프로퍼티를 사용할 수 있습니다.
 function MyComponent(props) {
   return (
     <div className={props.className}>
@@ -21,7 +21,7 @@ function MyComponent(props) {
 
 var reactElement = <MyComponent className="abc" customData="world"/>
 
-// Which also works with an object and the spread (...) operator
+// 객체와 스프레드 (...) 연산자와도 작동합니다.
 var props = {
   className: "abc",
   customData: "world",
@@ -29,10 +29,10 @@ var props = {
 
 reactElement = <MyComponent {...props}/>
 
-// This allows components with dynamic content
+// 동적 콘텐츠가있는 컴포넌트도 구현할 수 있습니다.
 var planets = ["earth", "mars", "venus"]
 
-// If an array is used as a "child node" each child needs a unique key-property
+// 배열이 "자식 노드"로 사용되면 각 자식은 고유 한 키 속성이 필요합니다.
 var elements = planets.map(function(planet, index) {
   return <MyComponent className="myClass" customData={planet} key={index}/>
 })

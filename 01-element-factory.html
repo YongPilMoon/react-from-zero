@@ -8,9 +8,9 @@
 <div id="app"></div>
 
 <script>
-  // React.createElement() needs type, properties, children.
-  // This is less verbose than using plain object literals,
-  // it hides the $$type/Symbol and ref mentioned in lesson 0
+  // React.createElement()는 type, properties, children를 필요로합니다.
+  // 이것은 일반적인 객체 리터럴을 사용하는 것보다 덜 장황합니다.
+  // lesson 0 에서 언급 된 $$type/Symbol 및 reference는 들어나지 않습니다.
   var reactElement = React.createElement("h1", {
 
     className: "abc",
@@ -24,7 +24,7 @@
   }, "Hello, world!")
 
 
-  // The second argument is the property object and has to be null if empty
+  // 두 번째 인수는 property 객체이며 비어 있으면 null 이어야합니다.
   var anotherElement = React.createElement("p", null, "A nice text paragraph.")
 
   var renderTarget = document.getElementById("app")

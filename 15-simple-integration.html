@@ -7,27 +7,27 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
 <script src="https://unpkg.com/moment@2.18.1/min/moment.min.js">
-// Most of the time we have to use third party libraries
-// in our applications. Here we integrate a simple one
-// for date handling and use it with React. It doesn"t
-// use the DOM so it can be integrated fairly easy.
+// 대부분의 경우 우리는 응용 프로그램에서 타사 라이브러리를 사용해야합니다.
+// 여기서 우리는 날짜 처리를 위한 간단한 라이브러리를 통합하고 React와 함께 사용해 보겠습니다.
+// DOM을 사용하면 쉽게 통합 할 수 있습니다.
 </script>
 
 <div id="app"></div>
 
 <script type="text/babel">
-// Simple libraries that are called synchronous can used
-// directly in JSX with the help of {}, since they are
-// just function calls
+// 동기적으로 호출되는 간단한 라이브러리는
+// 함수 호출 일 뿐이므로 {}을 사용하여
+// JSX에서 직접 사용할 수 있습니다.
 var DateToday = function() {
   return <span>{moment().format("DD.MM.YYYY")}</span>
 }
 
 var tomorrow = moment().add(1, "day")
 
-// Nothing exciting happening here, just calling the library
-// and displaying its return values. First with some
-// elements, then used inside of a component.
+// 여기서 흥미 진진한 것은 없으며 단지 라이브러리를 호출하고
+// 반환 값을 표시하는 것입니다.
+// 처음에는 몇 가지 엘리먼트와 컴포넌트의 내부에서 사용되었습니다.
+
 var reactElement =
   <div>
     <h1 style={{textAlign:"center"}}>

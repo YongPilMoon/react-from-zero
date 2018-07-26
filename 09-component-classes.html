@@ -8,73 +8,66 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
 <script src="https://unpkg.com/create-react-class@15.6.3/create-react-class.js">
-// React.createClass was removed from React 16 and is now its own package
+// React.createClass는 React 16에서 제거되어 이제는 자체 패키지가 되었습니다.
 </script>
 
 <div id="app"></div>
 
 <script type="text/babel">
-// Often a component needs to maintain some internal state
-// for example if there is an interaction involved
-// in this case a component function is not sufficient
-// the component function can only have properties and no state
-// we need a component class with a render function
+// 컴포넌트는 내부 상태를 유지해야하는 경우가 종종 있습니다.
+// 예를 들어 상호 작용이 관련된 경우
+// 이 경우에는 함수형 컴포넌트로는 충분하지 않습니다.
+// 함수형 컴포넌트는 오직 프로퍼티만 가질 수 있고 상태는 갖지 못합니다.
+// 이때는 render 함수를 가진 클래스형 컴포넌트가 필요합니다.
 var MyComponent = createReactClass({
 
-  // used for type-checking of the properties
-  // same as with the component function
+  // 프로퍼티의 타입체크에 사용됩니다.
+  // 함수형 컴포넌트와 동일 합니다.
   propTypes: {
     color: PropTypes.string,
   },
 
-  // this method sets default values for missing properties
-  // it will be called by React
-  // before the components gets mounted into the DOM
+  // 이 메서드는 값이없는 프로퍼티에 대한 기본값을 설정합니다.
+  // 컴포넌트가가 DOM에 마운트되기 전에 React에 의해 호출 됩니다.
   getDefaultProps: function() {
     return {color: "green"}
   },
 
-  // this method sets the initial state for the component
-  // it will be called by React
-  // before the components gets mounted into the DOM
-  // if this method is missing, this.state will be undefined
+  // 이 메소드는, 컴퍼넌트의 초기 state를 설정합니다.
+  // 컴포넌트가 DOM에 마운트되기 전에 React에 의해 호출 됩니다.
+  // 이 메소드가 없으면 this.state는 undefined로 정의 됩니다.
   getInitialState: function() {
-    // The state can be any JavaScript value, often it is an object
+    // state값으로는 모든 JavaScript 값이 올 수 있지만 주로 객체가 옵니다.
     return {times: 0}
   },
 
-  // this method handles all the clicks on the <span> element
+  // 이 메소드는 <span> 엘리먼트에 대한 모든 클릭 이벤트를 처리합니다.
   handleClick: function() {
-    // setState() can be called with an object that contains the new state
-    // normally this triggers a call of render(), but React can batch multiple
-    // calls and defer the render() call (make the call asynchronous)
-    // To prevent this, setState can take a callback instead
+    // 새로운 state값을 포함하는 객체를 가지고 setState()를 호출 할 수 있습니다.
+    // 일반적으로 setState는 render() 호출을 발생시키지만
+    // React는 여러 호출을 일괄 처리하거나 render() 호출을 연기 할 수 있습니다. (호출을 비동기로 만듭니다)
+    // 이를 방지하기 위해 setState는 콜백을 사용할 수 있습니다.
 
-    // This can lead to unexpected behaviour, if we rely on this.state or
-    // this.props for our calculations
+    // this.state 나 this.props에 의존한다면 예기치 않은 동작이 발생할 수 있습니다.
     // this.setState({times: this.state.times + 1})
 
-    // The callback version doesn't have this problem
-    // The callback gets the right state and props at time of the update
+    // 콜백 버전을 사용하면 이 문제를 피할 수 있습니다.
+    // 콜백은 업데이트 시점에 올바른 state와 props를 얻습니다.
     this.setState(function(prevState, props) {
       return {times: prevState.times + 1}
     })
 
   },
 
-  // this method will be called by React
-  // after the component got mounted into the DOM
-  // also every time this.setState() was called
-  // it's like the component function from before
-  // but without a props argument
+  // 이 메소드는 컴포넌트가 DOM에 마운트 된 후 React에 의해 호출 됩니다.
+  // 혹은 this.setState()가 호출 될 때마다 호출 됩니다.
   render: function() {
 
-    // using the prop given by the creator of this component
-    // properties are now in this.props instead of the props argument
+    // 함수형 컴포넌트와 비슷하지만 props는 없습니다.
     var style = {color: this.props.color}
 
-    // returning an element with a click-handler and the props and
-    // state values. state is stored in this.state
+    // 클릭 핸들러와 props 및 state 값을 사용하여 엘리먼트를 반환합니다.
+    // state는 this.state에 저장된 값입니다.
     return (
       <span onClick={this.handleClick} style={style}>
         Clicked {this.state.times} times
@@ -85,10 +78,10 @@ var MyComponent = createReactClass({
 
 })
 
-// creating some instances of the interactive stateful component class
-// one with default color
-// Everything works exactly like with the simpler component functions
-// The interface has not changed for the user of this component
+
+// 기본 색상값을 가지고 있는 interactive, stateful한 클래스형 컴포너트 인스턴스 만들기
+// 모든 것이 간단한 함수형 컴포넌트와 똑같이 작동합니다.
+// 사용자가 사용하는 이 컴포넌트의 인터페이스는 변경되지 않았습니다.
 var reactElement =
   <div>
     <MyComponent color="red"/>

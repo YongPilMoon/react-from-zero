@@ -7,16 +7,15 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
 <script src="https://unpkg.com/prop-types@15.6.1/prop-types.js">
-// PropTypes were removed from React 16 and are now their own package
+// PropType은 React 16에서 삭제되었으며 현재는 독립된 패키지입니다.
 </script>
 
 <div id="app"></div>
 
 <script type="text/babel">
-// Components get created to encapsulate stuff that should be together in one
-// place and for reuse.
-// Reuse requires the user of the component to supply the correct properties so
-// we can define a type of each property and set defaults
+// 컴포넌트는 한 곳에서 함께 사용되어야 하고 재사용되어야 하는 항목을 캡슐화하기 위해 만들어졌습니다.
+// 컴포넌트가 재사용되려면 사용자가 올바른 프로퍼티를 제공해야 되기 때문에
+// 각 프로퍼티의 타입을 정의하고 기본값을 설정할 필요가 있습니다.
 
 function MyComponent(props) {
   return (
@@ -27,24 +26,24 @@ function MyComponent(props) {
   )
 }
 
-// Add the propTypes (function-)property to the component function
-// to let it validate its (element-)properties
+// propTypes (function-)프로퍼티를 혐수형 컴포넌트에 추가하여
+// 해당 (element-)프로퍼티의 유효성을 검사합니다.
 MyComponent.propTypes = {
-  // React supplies us with a bunch of types, like string
+  // React는  문자열과 같은 타입을 제공합니다.
   customData: PropTypes.string,
 }
 
-// Add defaultProps (function-)property to set the defaults
-// if nothing was provided by the user
+// 사용자가 아무값도 제공하지 않은 경우 기본값을 설정하는
+// defaultProps (function-)프로퍼티를 추가합니다.
 MyComponent.defaultProps = {
   customData: "default",
   className: "default-class",
 }
 
-// This will show a warning in the console, because customData should be a string
+// customData는 문자열이어야 하므로 콘솔에 경고가 표시됩니다.
 var reactElement = <MyComponent customData={123}/>
 
-// This will use the defaults
+// 이 경우에는 기본값을 사용합니다.
 reactElement = <MyComponent/>
 
 var renderTarget = document.getElementById("app")

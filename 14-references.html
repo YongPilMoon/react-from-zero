@@ -10,14 +10,12 @@
 <div id="app"></div>
 
 <script type="text/babel">
-// Sometimes we need some state from an element or a component
-// or it has to be directly modified somehow. For
-// this case, we can tell React to create references.
+// 때로는 엘리먼트나 컴포넌트의 상태가 필요하거나 직접 수정해야 할 경우가 있습니다.
+// 이 경우에 React에게 ref를 생성하도록 지시 할 수 있습니다.
 var RefComponent = createReactClass({
 
-  // First we tell React to render an input with a
-  // ref callback, it will be called, when the DOM of the input element
-  // is available
+  // 먼저 React에 ref 콜백을 사용하여 input을 렌더링하도록 지시합니다.
+  // ref 콜백은 input 엘리먼트의 DOM이 사용 가능할 때 호출됩니다.
   render: function() {
     return (
       <div>
@@ -27,27 +25,24 @@ var RefComponent = createReactClass({
     )
   },
 
-  // This callback is called when the input element was mounted into the DOM
-  // and again, with null, when it was unmounted again
-  // For elements the rendered DOM node will be stored
-  // For components the instance of the component will be stored.
+  // 이 콜백은 input 엘리먼트가 DOM에 mount되었을 때 호출됩니다.
+  // 그리고 unmount 될때 null값을 가지고 다시 호출 됩니다.
+  // 엘리먼트의 경우 렌더링 된 DOM 노드가 저장됩니다.
+  // 컴포넌트의 경우 컴포넌트의 인스턴스가 저장됩니다.
   handleRef(nameInput) {
-    // We save a reference to it for later use.
+    // 나중에 사용할 수 있도록 reference를 저장합니다.
     this.nameInput = nameInput
   },
 
-  // This callback is called when the button is clicked
-  // and uses this.nameInput to read out the value of the input.
+  // 이 콜백은 버튼을 클릭 할 때 호출되며 this.nameInput을 사용하여 입력 값을 읽습니다.
   handleClick: function() {
     console.log(this.nameInput.value)
   },
 
 })
 
-// Since references are local to their component
-// they can be used as local IDs to get elements
-// and don't override each other when another
-// instance of the component is created
+// reference는 컴포넌트의 로컬이므로 reference를 로컬 ID로 사용하여 엘리먼트를 가져올 수 있습니다.
+// 그래서 컴포넌트의 다른 인스턴스가 만들어 질 때 서로 override 하지않습니다.
 var reactElement =
   <div>
     <RefComponent/>

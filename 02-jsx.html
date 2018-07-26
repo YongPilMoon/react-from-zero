@@ -6,17 +6,17 @@
 <script src="https://unpkg.com/react-dom@16.4.0/umd/react-dom.development.js"></script>
 
 <script src="https://unpkg.com/@babel/standalone/babel.min.js">
-// Now we will use JSX, which needs to be converted to JavaScript.
-// For this we will use Babel. Babel is normally used to convert ES2015 to ES5, but
-// it also can convert JSX to ES5. Babels browser version uses text/babel script tags.
+// 이제 JavaScript로 변환되어야하는 JSX를 사용합니다.
+// 이를 위해 우리는 바벨을 사용할 것입니다. Babel은 일반적으로 ES2015를 ES5로 변환하는데 사용되지만 JSX를 ES5로 변환 할 수도 있습니다.
+// Babel 브라우저 버전은 text/babel 스크립트 태그를 사용합니다.
 </script>
 
 <div id="app"></div>
 
 <script type="text/babel">
-// JSX is the idiomatic way of creating elements.
-// It's basically XHTML with {} for dynamic content
-// also class has to be called className
+// JSX는 요소를 만드는 일반적인 방법입니다.
+// 기본적으로 동적 콘텐츠를 위해 { }를 사용하는 XHTML입니다.
+// class도 className으로 사용해야 합니다.
 var reactElement =
   <h1
     className="abc"
@@ -25,7 +25,7 @@ var reactElement =
     Hello, world!
   </h1>
 
-// Is the same as
+// 이 것은 다음과 같습니다.
 reactElement =
   React.createElement(
     "h1",
@@ -34,12 +34,12 @@ reactElement =
     "Hello, world!"
   )
 
-// JSX shines especially with simple elements that make up the majority
+// JSX는 특히 대다수를 구성하는 간단한 요소를 사용할 때 빛이 납니다.
 var anotherElement = <p>A nice text paragraph.</p>
-// Is the same as
+// 이 것은 다음과 같습니다.
 anotherElement = React.createElement("p", null, "A nice text paragraph.")
 
-// As we can see, everything else works as before
+// 보다싶이, 그 밖의 모든 것은 이전과 동일합니다.
 var renderTarget = document.getElementById("app")
 
 ReactDOM.render(reactElement, renderTarget)

@@ -11,12 +11,12 @@
 <div id="app"></div>
 
 <script type="text/babel">
-// Refactoring is another thing that is nice with React
-// First we'll talk about refactoring one component into another
-// if you're lucky, you can just change the implementation of a component
-// and don't need to change anything at the call-site
+// Refactoring은 React로 하기 좋은 또 하나의 것입니다.
+// 먼저 한 컴포넌트를 다른 컴포넌트로 리팩터링하는 방법에 대해 설명하겠습니다.
+// 운이 좋다면 단지 컴포넌트의 구현을 변경할 수 있습니다.
+// 통화 사이트에서 아무 것도 변경할 필요가 없습니다.
 
-// We start with a component that renders records somehow
+// 기록들를 렌더링하는 컴포넌트부터 시작합니다.
 function ViewBefore(props) {
   return (
     <table>
@@ -38,12 +38,12 @@ function ViewBefore(props) {
   )
 }
 
-// The component has a simple props-interface
+// 컴포넌트는 간단한 porp 인터페이스가 있습니다.
 ViewBefore.propTypes = {
   rooms: PropTypes.array.isRequired,
 }
 
-// Now we switch out the implementation with something more complicated
+// 이제 우리는 좀 더 복잡한 것 구현을 변환 할 것입니다.
 function ViewAfter(props) {
   return (
     <div>
@@ -64,12 +64,12 @@ function ViewAfter(props) {
     </div>
   )
 }
-// We keep the props-interface the same
+// prop 인터페이스를 동일하게 유지합니다.
 ViewAfter.propTypes = {
   rooms: PropTypes.array.isRequired,
 }
 
-// We could also switch it with something more dynamic
+// 더 동적 인 것으로 전환 할 수도 있습니다.
 var ViewDynamic = createReactClass({
 
   // We still keep the props-interface the same
@@ -109,7 +109,7 @@ var ViewDynamic = createReactClass({
 
 })
 
-// Some data
+// 일부 데이터
 var rooms = [
   {name:"Office", people: 10},
   {name:"Kitchen", people: 15},
@@ -117,9 +117,8 @@ var rooms = [
   {name:"Bathroom", people: 0},
 ]
 
-// As we can see the components can be used exactly the same
-// If we copy the implementation of ViewAfter into ViewBefore,
-// everything keeps working
+// 우리가 볼 수 있듯이 컴포넌트를 정확히 동일하게 사용할 수 있습니다.
+// ViewAfter의 구현을 ViewBefore에 복사하면 모든 것이 계속 작동합니다.
 var reactElement =
   <div style={{margin: "auto", width: 500}}>
 

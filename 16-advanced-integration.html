@@ -8,22 +8,19 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
 <script src="https://unpkg.com/d3@4.7.3/build/d3.min.js">
-// Sometimes we need to integrate more complex
-// libraries. Libraries that want to use the
-// DOM directly or require asynchronous interaction.
-// In this example we use D3.js, a free InfoVis library.
+// 때때로 더 복잡한 라이브러리를 통합해야합니다.
+// DOM을 직접 사용하거나 비동기 상호 작용이 필요한 라이브러리.
+// 이 예에서는 무료 InfoVis 라이브러리 인 D3.js를 사용합니다.
 </script>
 
 <div id="app"></div>
 
 <script type="text/babel">
-// Since D3 needs to interact directly with the DOM we
-// should use a component class, because it can store
-// references to its DOM-elements.
+// D3은 DOM과 직접 상호 작용해야하므로 DOM 요소에 대한 reference를
+// 저장할 수 있는 클래스형 컴포넌트를 사용해야합니다.
 var Visual = createReactClass({
 
-  // We simply render an empty canvas and tell React to
-  // store its reference after the render
+  // 우리는 단순히 빈 캔버스를 렌더링하고 React에게 렌더링 후에 reference를 저장하도록 지시합니다.
   render: function() {
     return <canvas ref={this.handleRef} width={500} height={500}/>
   },
@@ -32,38 +29,35 @@ var Visual = createReactClass({
     this.canvas = canvas
   },
 
-  // After the first render, we grab the reference
-  // to the canvas element in the DOM and pass it
-  // to the library
+  // 첫 번째 렌더링 후 DOM의 canvas 엘리먼트에 대한 reference를 가져 와서 라이브러리에 전달합니다.
   componentDidMount: function() {
-    // Here we also use some additional color configuration
+    // 여기에서는 몇 가지 추가 색상 구성도 사용합니다.
     drawGraph(this.canvas, this.props.color)
   },
 
-  // We also have some fine-granular control over the re-render
-  // With the use of this lifecylce method
+  // 우리는 또한 이 lifecylce 메소드를 사용하여
+  // 다시 렌더링하는 것에 대해 세분화 된 제어를합니다
   shouldComponentUpdate: function(nextProps, nextState) {
-    // Here we could tell our library the new data for props
-    // or state, so it can update the DOM elements on its own
+    // 여기서는 props나 state에 대한 새로운 데이터를 라이브러리에 알릴 수 있으므로
+    // DOM 요소를 자체적으로 업데이트 할 수 있습니다.
 
-    // At the end we always return false so our render method
-    // isn't called and the canvas element isn't replaced
+    // 마지막에 우리는 항상 false를 반환하므로
+    // 렌더링 메소드가 호출되지 않고 캔버스 요소가 대체되지 않습니다.
     return false
   },
 
-  // This lifecycle method can be used to free resources
-  // before the component will be removed from the DOM.
-  // Our canvas will be removed for sure, but often there
-  // is state for the library, other objects, listeners etc.
-  // they could be stored on the component and should be
-  // deleted to prevent memory leaks
+  // 이 라이프 사이클 메소드를 사용하면 구성 요소가 DOM에서
+  // 제거되기 전에 리소스를 비울 수 있습니다.
+  // 우리의 캔버스는 확실히 제거 될 것이지만,
+  // 종종 라이브러리, 다른 객체, 리스너 등을 위한 상태값이 있습니다.
+  // 그것들은 컴포넌트에 저장할 수 있으며 메모리 누수를 방지하기 위해 삭제해야합니다.
   componentWillUnmount() {},
 
 })
 
-// Now we can use the library as a component
-// No need for global IDs, every instance has its own canvas
-// reference stored, also its own color property
+// 이제 라이브러리를 컴포넌트로 사용할 수 있습니다.
+// 글로벌 ID가 필요없고, 모든 인스턴스에 고유 한 캔버스 참조가
+// 저장되어 있으며 자체 색상 property가 있습니다.
 var reactElement =
   <div>
     <Visual color="#f00"/>
@@ -73,7 +67,7 @@ var reactElement =
 
 ReactDOM.render(reactElement, document.getElementById("app"))
 
-// Wrapping the library interaction into a function
+// 라이브러리 상호 작용을 함수로 래핑하기
 function drawGraph(canvas, strokeColor) {
 
   // An example from http://bl.ocks.org/mbostock/1b64ec067fcfc51e7471d944f51f1611

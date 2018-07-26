@@ -6,56 +6,56 @@
 <script src="https://unpkg.com/react-dom@16.4.0/umd/react-dom.development.js"></script>
 
 <div id="app">
-  <!--The render target of our React application-->
+  <!--React 애플리케이션의 렌더링 타겟-->
 </div>
 
 <script>
-  // React uses ES2015 Symbols to "tag" its element-objects.
-  // It uses a magic number as fallback on older browsers.
+  // React는 ES2015 Symbols을 사용하여 객체 요소에 "태그"를 지정합니다.
+  // 구형 브라우저에서는 매직 번호를 대체 문자로 사용합니다.
   var magicValue = (Symbol && Symbol.for("react.element")) || 0xeac7
 
-  // React uses virtual DOM elements, which become real DOM elements on a render.
-  // A virtual DOM element can be defined as a simple object literal.
-  // Normally you would use the React.createElement() to create an element.
-  // This is what the return value of a React.createElement() call could look like.
+  // React는 렌더링 과정에서 실제 DOM 요소가 되는 Virtual DOM 요소를 사용합니다.
+  // Virtual DOM 요소는 간단한 객체 리터럴로 정의 됩니다.
+  // 일반적으로 요소는 React.createElement()를 사용하여 만들어집니다.
+  // React.createElement() 호출의 반환 값은 다음과 같습니다.
   var reactElement = {
 
-    // This special property will be checked by React to ensure this object
-    // is a React element and not just some user data
-    // React.createElement() sets it for you
+    // 이 특수한 속성은 React에 의해 체크되고
+    // 이 객체가 단순한 사용자 데이터가 아닌 React 요소인지 판별하는데 사용됩니다.
+    // 이 속성은 React.createElement()에 의해 설정됩니다.
     $$typeof: magicValue,
 
-    // This will also be checked by React. We will be talking about references
-    // later, but if you're not using them, this has to be set to null and not
-    // undefined
+    // 이 속성도 React에 의해서 체크됩니다.
+    // 나중에 참조에 대해 이야기 할 것이지만,
+    // 사용되지 않는다면 이 값은 undefined가 아닌 null로 설정되야 합니다.
     ref: null,
 
-    // This defines the HTML-tag
+    // HTML 태그를 정의합니다.
     type: "h1",
 
-    // This defines the properties that get passed down into the element
+    // 이것은 요소로 전달되는 속성들을 정의합니다.
     props: {
 
-      // In this example there is just a single text node as child
+      // 이 예제에서는 하나의 텍스트 노드가 자식 노드로 존재합니다.
       children: "Hello, world!",
 
-      // a CSS class
+      // CSS 클래스
       className: "abc",
 
-      // styles can be passed as object literals
-      // React uses camelCase instead of dashed-case (like CSS/D3 do)
+      // 스타일은 객체 리터럴로 전달 됩니다.
+      // React는 dashed-case 대신 camelCase를 사용합니다.(like CSS/D3 do)
       style: {
         textAlign: "center",
       },
 
-      // event handlers can be added as properties, too
-      // React uses synthetic events, which basically try to normalize browser behaviour
+      // 이벤트 핸들러를 속성으로 추가 할 수도 있습니다.
+      // React는 기본적으로 브라우저 동작을 표준화하기 위해 synthetic event를 사용합니다.
       onClick: function (notYourRegularEvent) { alert("click") },
     },
 
   }
 
-  // another element that doesn"t have much configuration
+  // 속성이 많지 않은 anotherElement
   var anotherElement = {
     $$typeof: magicValue,
     ref: null,
@@ -65,9 +65,9 @@
     },
   }
 
-  // React needs a DOM element as render target
+  // React는 렌더링 대상으로 DOM 요소가 필요합니다.
   var renderTarget = document.getElementById("app")
 
-  // ReactDOM is responsible for inserting the element into the DOM
+  // ReactDOM은 요소를 DOM에 삽입하는 역활을 합니다.
   ReactDOM.render(reactElement, renderTarget)
 </script>

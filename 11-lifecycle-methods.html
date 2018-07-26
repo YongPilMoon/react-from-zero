@@ -10,18 +10,18 @@
 <div id="app"></div>
 
 <script type="text/babel">
-// If we use component classes, our components inherit
-// a bunch of methods, which get called by React at specific
-// times to allow us to get more control over our components
-// a few of them we already met in lesson 9
-// Here are a few new ones. Not all of them, but the most important ones
+// 클래스형 컴포넌트를 사용한다면,
+// 컴포넌트는 React에 의해 호출되는 많은 메소드를 상속받습니다.
+// 컴포넌트를 더 잘 제어 하는 방법을 알아보는 시간입니다.
+// 그 중 몇몇 방법은 이미 수업 lesson 9 에서 만났습니다.
+// 여기 몇 가지 새로운 것들이 있습니다. 모두는 아니지만 가장 중요한 것들 입니다.
 
 var TRANSLATION_FROM_SOMEWHERE = "Text from a synchronous source."
 
 var MyComponent = createReactClass({
-  // This method is for default prop values
-  // it gets called before the props are given to our component
-  // the "real" props override them if there are any
+  // 이 method는 기본 props 값을위한 것입니다.
+  // props가 컴포넌트에 주어지기 전에 호출됩니다.
+  // props값이 주어지면 기본 props 값은 무시 됩니다.
   getDefaultProps: function() {
     return {
       iGetOverriden: "default",
@@ -29,28 +29,28 @@ var MyComponent = createReactClass({
     }
   },
 
-  // This method is called before a component got mounted to the DOM
-  // it returns values that are used for this.state
+  // 이 메소드는 컴포넌트가 DOM에 마운트되기 전에 호출됩니다.
+  // this.state에 사용되는 값들을 반환합니다.
   getInitialState: function() {
     return {serverData: null}
   },
 
-  // This method gets called right before the component is mounted
-  // can be used to initialize some synchronous configuration, that should
-  // be available before the component renders
+  // 이 메소드는, 컴퍼넌트가 마운트되기 직전에 호출됩니다.
+  // 컴포넌트를 렌더링하기 전에 사용해야 하는
+  // 일부 synchronous configuration을 초기화하기에 적당한 장소 입니다.
   componentWillMount: function() {
     this.TEXT = TRANSLATION_FROM_SOMEWHERE
   },
 
-  // This method will be called right after the component got mounted
-  // it's a good place to start some asynchronous tasks.
-  // For example on the first mount it shows a loading message
-  // then componentDidMount is called and gets some server data.
+  // 이 메소드는, 컴퍼넌트가 마운트 된 직후에 호출됩니다.
+  // 비동기 작업을 하기에 적당한 장소 입니다.
+  // 예를 들어 첫 번째 마운트에서는 로딩 메시지를 보여줍니다.
+  // 그런다음 componentDidMount가 호출되어 서버 데이터를 가져옵니다.
   componentDidMount: function() {
 
     var component = this
 
-    // We clean up the data and get new from somewhere
+    // 데이터를 초기화한 후 어딘가에서 부터 데이터를 얻습니다.
     function loadData() {
 
       component.setState({serverData: null})
@@ -61,28 +61,28 @@ var MyComponent = createReactClass({
 
     }
 
-    // Initial data load
+    // 초기 데이터로드
     loadData()
 
-    // We simulate a server request every 4 seconds
+    // 4 초마다 서버 요청을 시뮬레이션합니다.
     this.updateInterval = setInterval(loadData, 4000)
 
   },
 
-  // This method will be called before the component gets removed from the DOM
-  // a bit like a destructor. Here we can do some cleanup.
+  // 이 메소드는 소멸자와 같이 DOM에서 컴포넌트가 제거되기 전에 호출됩니다.
+  // 여기서 정리 할 수 있습니다.
   componentWillUnmount: function() {
 
     clearInterval(this.updateInterval)
 
   },
 
-  // This method is called before a render when new props or state is available
-  // it won"t be called on the first render or if this.forceUpdate() is used
-  // it can be used if some state or prop changes don"t require a rerender
+  // 이 메소드는 새로운 props나 state가 접근 가능 한 렌더링 전 시점에 호출됩니다.
+  // 첫 번째 렌더링시 또는 this.forceUpdate ()가 사용 된 경우에는 호출되지 않습니다.
+  // 어떤 state 또는 props 변경이 재 렌더링을 필요로하지 않는 경우에 사용할 수 있습니다.
   shouldComponentUpdate: function(nextProps, nextState) {
 
-    // we want to render on every change, this is the default behaviour
+    // 기본적으로 모든 변경 사항을 렌더링 하려고합니다.
     return true
 
   },
