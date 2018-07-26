@@ -32,7 +32,14 @@ reactElement = <MyComponent {...props}/>
 // 동적 콘텐츠가있는 컴포넌트도 구현할 수 있습니다.
 var planets = ["earth", "mars", "venus"]
 
+
 // 배열이 "자식 노드"로 사용되면 각 자식은 고유 한 키 속성이 필요합니다.
+// 이 맵 호출은 다음 예제와 같이 컴포넌트 배열을 리턴합니다.
+// [
+//  <MyComponent className="myClass" customData={"earth"} key={0}/>,
+//  <MyComponent className="myClass" customData={"mars"} key={1}/>,
+//  <MyComponent className="myClass" customData={"venus"} key={2}/>
+// ]
 var elements = planets.map(function(planet, index) {
   return <MyComponent className="myClass" customData={planet} key={index}/>
 })
