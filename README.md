@@ -1,14 +1,15 @@
 # React From Zero
 
-A simple (99% ES2015 less) tutorial for React
+간단한 React 튜토리얼 (99% ES2015 이하)
 
-Everything runs in the browser without a manual pre-compilation.
+모든 코드는 사전 컴파일없이 브라우저에서 실행됩니다.
 
 ## Create React App
 
-If you want to run the examples with [create-react-app](https://github.com/facebook/create-react-app), you have to copy the `text/babel` script parts of the examples into the `src/index.js` file of the React app you created and change the `renderTarget`s ID from `app` to `root`.
+[create-react-app] (https://github.com/facebook/create-react-app)로 예제를 실행하려면 예제의 `text/babel` 스크립트 부분을 생성 한 React 앱의`src/index.js` 파일에 복사하고`renderTarget` ID를`app`에서`root`로 변경하십시오.
 
-## Translations
+
+## 번역
 
 - [![china](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/China.png) **中文/Chinese**](https://github.com/chinanf-boy/react-from-zero)
 
@@ -26,7 +27,6 @@ If you want to run the examples with [create-react-app](https://github.com/faceb
 [Preview](https://cdn.rawgit.com/kay-is/react-from-zero/b31878c2/00-object-elements.html)
 
 [Lesson 1 - Element Factory](https://github.com/kay-is/react-from-zero/blob/master/01-element-factory.html) - 엘리먼트 팩토리
-[Preview](https://cdn.rawgit.com/kay-is/react-from-zero/b31878c2/01-element-factory.html)
 
 [Lesson 2 - JSX](https://github.com/kay-is/react-from-zero/blob/master/02-jsx.html) - JSX
 [Preview](https://cdn.rawgit.com/kay-is/react-from-zero/b31878c2/02-jsx.html)
@@ -74,4 +74,5 @@ If you want to run the examples with [create-react-app](https://github.com/faceb
 [Preview](https://cdn.rawgit.com/kay-is/react-from-zero/b31878c2/16-advanced-integration.html)
 
 [Lesson 17 - Unit Testing](https://github.com/kay-is/react-from-zero/blob/master/17-unit-testing.html) - 유닛 테스트
+
 [Preview](https://cdn.rawgit.com/kay-is/react-from-zero/7dc8cf9b/17-unit-testing.html)
