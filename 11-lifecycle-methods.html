@@ -13,8 +13,8 @@
 // 클래스형 컴포넌트를 사용한다면,
 // 컴포넌트는 React에 의해 호출되는 많은 메소드를 상속받습니다.
 // 컴포넌트를 더 잘 제어 하는 방법을 알아보는 시간입니다.
-// 그 중 몇몇 방법은 이미 수업 lesson 9 에서 만났습니다.
-// 여기 몇 가지 새로운 것들이 있습니다. 모두는 아니지만 가장 중요한 것들 입니다.
+// 그 중 몇몇 방법은 이미 수업 lesson 9에서 만났습니다.
+// 여기 몇 가지 새로운 것들이 있습니다. 모두는 아니지만 대부분은 가장 중요한 것들 중 하나입니다.
 
 var TRANSLATION_FROM_SOMEWHERE = "Text from a synchronous source."
 
@@ -37,7 +37,7 @@ var MyComponent = createReactClass({
 
   // 이 메소드는, 컴퍼넌트가 마운트되기 직전에 호출됩니다.
   // 컴포넌트를 렌더링하기 전에 사용해야 하는
-  // 일부 synchronous configuration을 초기화하기에 적당한 장소 입니다.
+  // 일부 동기 작업을 초기화하기에 적당한 장소 입니다.
   componentWillMount: function() {
     this.TEXT = TRANSLATION_FROM_SOMEWHERE
   },
@@ -50,7 +50,7 @@ var MyComponent = createReactClass({
 
     var component = this
 
-    // 데이터를 초기화한 후 어딘가에서 부터 데이터를 얻습니다.
+    // 데이터를 초기화한 후 데이터를 얻습니다.
     function loadData() {
 
       component.setState({serverData: null})
@@ -70,16 +70,16 @@ var MyComponent = createReactClass({
   },
 
   // 이 메소드는 소멸자와 같이 DOM에서 컴포넌트가 제거되기 전에 호출됩니다.
-  // 여기서 정리 할 수 있습니다.
+  // 여기서 불필요한 요소들을 정리 할 수 있습니다.
   componentWillUnmount: function() {
 
     clearInterval(this.updateInterval)
 
   },
 
-  // 이 메소드는 새로운 props나 state가 접근 가능 한 렌더링 전 시점에 호출됩니다.
+  // 이 메소드는 새로운 props나 state가 접근 가능 하면서 렌더링 전인 시점에 호출됩니다.
   // 첫 번째 렌더링시 또는 this.forceUpdate ()가 사용 된 경우에는 호출되지 않습니다.
-  // 어떤 state 또는 props 변경이 재 렌더링을 필요로하지 않는 경우에 사용할 수 있습니다.
+  // 어떤 state 또는 props의 변경이 재 렌더링을 필요로하지 않는 경우에 사용할 수 있습니다.
   shouldComponentUpdate: function(nextProps, nextState) {
 
     // 기본적으로 모든 변경 사항을 렌더링 하려고합니다.

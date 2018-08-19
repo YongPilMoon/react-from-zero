@@ -9,7 +9,7 @@
 <div id="app"></div>
 
 <script type="text/babel">
-// 컴포넌트는 엘리먼트와 마찬가지로 프로퍼티를 사용할 수 있습니다.
+// 컴포넌트는 React 엘리먼트와 마찬가지로 프로퍼티를 사용할 수 있습니다.
 function MyComponent(props) {
   return (
     <div className={props.className}>
@@ -17,6 +17,13 @@ function MyComponent(props) {
       <h2>{props.customData}</h2>
     </div>
   )
+}
+
+// 사용자가 아무값도 제공하지 않은 경우 기본값을 설정하는
+// defaultProps (function-)프로퍼티를 추가합니다.
+MyComponent.defaultProps = {
+  customData: "default-data",
+  className: "default-class",
 }
 
 var reactElement = <MyComponent className="abc" customData="world"/>
@@ -33,7 +40,7 @@ reactElement = <MyComponent {...props}/>
 var planets = ["earth", "mars", "venus"]
 
 
-// 배열이 "자식 노드"로 사용되면 각 자식은 고유 한 키 속성이 필요합니다.
+// 배열이 "자식 노드"로 사용되면 각 자식은 고유 한 키 프로퍼티가 필요합니다.
 // 이 맵 호출은 다음 예제와 같이 컴포넌트 배열을 리턴합니다.
 // [
 //  <MyComponent className="myClass" customData={"earth"} key={0}/>,

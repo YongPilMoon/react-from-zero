@@ -14,7 +14,7 @@
 <div id="app"></div>
 
 <script type="text/babel">
-// JSX는 요소를 만드는 일반적인 방법입니다.
+// JSX는 React 엘리먼트를 만드는 일반적인 방법입니다.
 // 기본적으로 동적 콘텐츠를 위해 { }를 사용하는 XHTML입니다.
 // class도 className으로 사용해야 합니다.
 var reactElement =
@@ -25,7 +25,7 @@ var reactElement =
     Hello, world!
   </h1>
 
-// 이 것은 다음과 같습니다.
+// 위의 코드는 다음과 같이 변환됩니다.
 reactElement =
   React.createElement(
     "h1",
@@ -34,9 +34,9 @@ reactElement =
     "Hello, world!"
   )
 
-// JSX는 특히 대다수를 구성하는 간단한 요소를 사용할 때 빛이 납니다.
+// JSX는 특히 React 앱의 대다수를 구성하는 간단한 React 엘리먼트를 사용할 때 빛이 납니다.
 var anotherElement = <p>A nice text paragraph.</p>
-// 이 것은 다음과 같습니다.
+// 위의 코드는 다음과 같이 변환됩니다.
 anotherElement = React.createElement("p", null, "A nice text paragraph.")
 
 // 보다싶이, 그 밖의 모든 것은 이전과 동일합니다.

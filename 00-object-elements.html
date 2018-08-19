@@ -10,30 +10,30 @@
 </div>
 
 <script>
-  // React는 ES2015 Symbols을 사용하여 객체 요소에 "태그"를 지정합니다.
+  // React는 ES2015 Symbols을 사용하여 객체 엘리먼트에 "태그"를 지정합니다.
   // 구형 브라우저에서는 매직 번호를 대체 문자로 사용합니다.
   var magicValue = (Symbol && Symbol.for("react.element")) || 0xeac7
 
-  // React는 렌더링 과정에서 실제 DOM 요소가 되는 Virtual DOM 요소를 사용합니다.
-  // Virtual DOM 요소는 간단한 객체 리터럴로 정의 됩니다.
-  // 일반적으로 요소는 React.createElement()를 사용하여 만들어집니다.
+  // React는 렌더링 과정에서 실제 DOM 엘리먼트가 되는 Virtual DOM 엘리먼트를 사용합니다.
+  // Virtual DOM 엘리먼트는 간단한 객체 리터럴로 정의 됩니다.
+  // 일반적으로 React 엘리먼트는 React.createElement()를 사용하여 만들어집니다.
   // React.createElement() 호출의 반환 값은 다음과 같습니다.
   var reactElement = {
 
-    // 이 특수한 속성은 React에 의해 체크되고
-    // 이 객체가 단순한 사용자 데이터가 아닌 React 요소인지 판별하는데 사용됩니다.
-    // 이 속성은 React.createElement()에 의해 설정됩니다.
+    // 이 특별한 프로퍼티는 React에 의해 체크되고
+    // 이 객체가 단순한 사용자 데이터가 아닌 React 엘리먼트인지 판별하는데 사용됩니다.
+    // 이 프로퍼티는 React.createElement()에 의해 설정됩니다.
     $$typeof: magicValue,
 
-    // 이 속성도 React에 의해서 체크됩니다.
-    // 나중에 참조에 대해 이야기 할 것이지만,
+    // 이 프로퍼티도 React에 의해서 체크됩니다.
+    // 나중에 참조에 대해 이야기 하겠지만,
     // 사용되지 않는다면 이 값은 undefined가 아닌 null로 설정되야 합니다.
     ref: null,
 
     // HTML 태그를 정의합니다.
     type: "h1",
 
-    // 이것은 요소로 전달되는 속성들을 정의합니다.
+    // 이것은 React 엘리먼트로 전달되는 프로퍼티들을 정의합니다.
     props: {
 
       // 이 예제에서는 하나의 텍스트 노드가 자식 노드로 존재합니다.
@@ -48,14 +48,14 @@
         textAlign: "center",
       },
 
-      // 이벤트 핸들러를 속성으로 추가 할 수도 있습니다.
+      // 이벤트 핸들러를 프로퍼티로 추가할 수도 있습니다.
       // React는 기본적으로 브라우저 동작을 표준화하기 위해 synthetic event를 사용합니다.
       onClick: function (notYourRegularEvent) { alert("click") },
     },
 
   }
 
-  // 속성이 많지 않은 anotherElement
+  // 프로퍼티가 많지 않은 anotherElement
   var anotherElement = {
     $$typeof: magicValue,
     ref: null,
@@ -65,9 +65,9 @@
     },
   }
 
-  // React는 렌더링 대상으로 DOM 요소가 필요합니다.
+  // React는 렌더링 대상으로 DOM 엘리먼트가 필요합니다.
   var renderTarget = document.getElementById("app")
 
-  // ReactDOM은 요소를 DOM에 삽입하는 역활을 합니다.
+  // ReactDOM은 React 엘리먼트를 DOM에 삽입하는 역활을 합니다.
   ReactDOM.render(reactElement, renderTarget)
 </script>

@@ -8,7 +8,7 @@
 <script src="https://unpkg.com/mocha@5.2.0/mocha.js">
   // React의 기본 테스트 도구는 Jest이지만 브라우저에서는 실행되지 않습니다.
   // 그래서 우리는 Jest (expect와 jest-mock)의 일부만을 기본 테스트 설정을 설명하기 위해 사용합니다
-  // 모카는 대체 test runner로 사용됩니다.
+  // 대신 test runner로 모카를 사용합니다.
 </script>
 <link href="https://unpkg.com/mocha@5.2.0/mocha.css" rel="stylesheet" />
 
@@ -28,7 +28,7 @@
   // 나중에 Jest를 사용하는 경우 모카 관한 코드를 무시하십시오.
   mocha.setup("bdd");
 
-  //  일반ㅌ적으로 다른 파일에서 가져온 간단한 컴포넌트.
+  // 다른 파일에서 가져온 간단한 컴포넌트.
   const MyComponent = () => (
     <div>
       <span className="heading">Title</span>
@@ -51,13 +51,13 @@
         <span className="heading">Title</span>
       );
 
-      // Jest는 스냅 샷 파일을 만들 수도 있습니다
+      // Jest는 스냅 샷 파일을 만들 수도 있습니다.
       // 다음 테스트 실행시 변경 사항을 확인하는 데 사용됩니다.
       // expect(result).toMatchSnapshot();
     });
   });
 
-  // Jest로 타겟 코드의 일부를  것도 가능하다.
+  // Jest로 타겟 코드의 일부를 mock 하는것도 가능하다.
 
   // 여기서 우리는 Jest stand-alone의 mock 부분을 사용합니다.
   // 이것은 일반적으로 글로벌 "jest"객체의 일부이다.

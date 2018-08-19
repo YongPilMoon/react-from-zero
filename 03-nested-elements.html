@@ -9,27 +9,27 @@
 <div id="app"></div>
 
 <script type="text/babel">
-// 요소는 중첩 될 수 있으므로 중첩 된 React.createElement 호출이 발생합니다.
-// 상상할 수 있듯이, JSX없이 이것을 작성하는 것은 꽤 지루한 작업일 것입니다.
+// React 엘리먼트는 중첩 될 수 있으므로 중첩 된 React.createElement 호출이 발생합니다.
+// 상상해보면, JSX없이 이것을 작성하는 것은 꽤 지루한 작업일 것입니다.
 var reactElement =
   <div className="abc">
     <h1>Hello</h1>
     <h2>world</h2>
   </div>
 
-// 또한 lesson 2에서 언급 한 것처럼 {}에 JavaScript가 들어 있습니다.
+// 또한 lesson 2에서 언급 한 것처럼 {}에 자바스크립트가 들어 있습니다.
 var myClass = "abc"
 
 function myText() { return "world" }
 
-// JavaScript 삽입은 일반 텍스트 또는 요소와 같은 구문을 가집니다.
+// 자바스크립트로 삽입된 내용은 일반 텍스트 또는 React 엘리먼트를 삽입한 것과 같은 구문을 가집니다.
 reactElement =
   <div className={myClass}>
     <h1>Hello {10 * 10}</h1>
     <h2>{myText()}</h2>
   </div>
 
-// 이 JavaScript에는 요소도 포함될 수 있습니다.
+// 이 자바스크립트에는 React 엘리먼트도 포함될 수 있습니다.
 var nestedElement = <h2>world</h2>
 
 reactElement =
@@ -38,7 +38,7 @@ reactElement =
     {nestedElement}
   </div>
 
-// 객체를 속성으로 "spread"하는 것도 가능합니다.
+// 프로퍼티 객체를 스프레드 연산자를 사용하여 적용하는 것도 가능합니다.
 var properties = {
   className: "abc",
   onClick: function() { alert("click") },

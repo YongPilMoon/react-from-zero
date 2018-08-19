@@ -16,7 +16,7 @@
 <div id="app"></div>
 
 <script type="text/babel">
-// D3은 DOM과 직접 상호 작용해야하므로 DOM 요소에 대한 reference를
+// D3은 DOM과 직접 인터랙션 해야하므로 DOM 요소에 대한 reference를
 // 저장할 수 있는 클래스형 컴포넌트를 사용해야합니다.
 var Visual = createReactClass({
 
@@ -31,7 +31,7 @@ var Visual = createReactClass({
 
   // 첫 번째 렌더링 후 DOM의 canvas 엘리먼트에 대한 reference를 가져 와서 라이브러리에 전달합니다.
   componentDidMount: function() {
-    // 여기에서는 몇 가지 추가 색상 구성도 사용합니다.
+    // 여기에서는 몇 가지 추가 색상도 전달 됩니다.
     drawGraph(this.canvas, this.props.color)
   },
 
@@ -49,7 +49,7 @@ var Visual = createReactClass({
   // 이 라이프 사이클 메소드를 사용하면 구성 요소가 DOM에서
   // 제거되기 전에 리소스를 비울 수 있습니다.
   // 우리의 캔버스는 확실히 제거 될 것이지만,
-  // 종종 라이브러리, 다른 객체, 리스너 등을 위한 상태값이 있습니다.
+  // 종종 라이브러리, 다른 객체, 리스너 등을 위한 상태값이 남아 있습니다.
   // 그것들은 컴포넌트에 저장할 수 있으며 메모리 누수를 방지하기 위해 삭제해야합니다.
   componentWillUnmount() {},
 
@@ -57,7 +57,7 @@ var Visual = createReactClass({
 
 // 이제 라이브러리를 컴포넌트로 사용할 수 있습니다.
 // 글로벌 ID가 필요없고, 모든 인스턴스에 고유 한 캔버스 참조가
-// 저장되어 있으며 자체 색상 property가 있습니다.
+// 저장되어 있으며 자체 색상 프로퍼티가 있습니다.
 var reactElement =
   <div>
     <Visual color="#f00"/>

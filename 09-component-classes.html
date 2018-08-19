@@ -15,7 +15,7 @@
 
 <script type="text/babel">
 // 컴포넌트는 내부 상태를 유지해야하는 경우가 종종 있습니다.
-// 예를 들어 상호 작용이 관련된 경우
+// 예를 들어 사용자와의 인터랙션이 관련된 경우
 // 이 경우에는 함수형 컴포넌트로는 충분하지 않습니다.
 // 함수형 컴포넌트는 오직 프로퍼티만 가질 수 있고 상태는 갖지 못합니다.
 // 이때는 render 함수를 가진 클래스형 컴포넌트가 필요합니다.
@@ -28,7 +28,7 @@ var MyComponent = createReactClass({
   },
 
   // 이 메서드는 값이없는 프로퍼티에 대한 기본값을 설정합니다.
-  // 컴포넌트가가 DOM에 마운트되기 전에 React에 의해 호출 됩니다.
+  // 컴포넌트가 DOM에 마운트되기 전에 React에 의해 호출 됩니다.
   getDefaultProps: function() {
     return {color: "green"}
   },
@@ -37,16 +37,16 @@ var MyComponent = createReactClass({
   // 컴포넌트가 DOM에 마운트되기 전에 React에 의해 호출 됩니다.
   // 이 메소드가 없으면 this.state는 undefined로 정의 됩니다.
   getInitialState: function() {
-    // state값으로는 모든 JavaScript 값이 올 수 있지만 주로 객체가 옵니다.
+    // state값으로는 모든 자바스크립트 값이 올 수 있지만 주로 객체가 옵니다.
     return {times: 0}
   },
 
   // 이 메소드는 <span> 엘리먼트에 대한 모든 클릭 이벤트를 처리합니다.
   handleClick: function() {
-    // 새로운 state값을 포함하는 객체를 가지고 setState()를 호출 할 수 있습니다.
+    // 새로운 state값을 포함하는 객체를 파라미터로 가지고 setState()를 호출 할 수 있습니다.
     // 일반적으로 setState는 render() 호출을 발생시키지만
-    // React는 여러 호출을 일괄 처리하거나 render() 호출을 연기 할 수 있습니다. (호출을 비동기로 만듭니다)
-    // 이를 방지하기 위해 setState는 콜백을 사용할 수 있습니다.
+    // React는 여러 setState 호출을 일괄 처리하거나 render() 호출을 연기 할 수 있습니다. (호출을 비동기로 만듭니다)
+    // 이를 방지하기 위해 setState에서 콜백을 사용할 수 있습니다.
 
     // this.state 나 this.props에 의존한다면 예기치 않은 동작이 발생할 수 있습니다.
     // this.setState({times: this.state.times + 1})
